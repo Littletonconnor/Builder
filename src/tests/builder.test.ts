@@ -35,3 +35,22 @@ describe("#buildList", () => {
     expect(factory(user).buildList()).toEqual([user]);
   });
 });
+
+describe("mutate", () => {
+  test("properly mutates shallow objects", () => {
+    const user = {
+      name: "Connor",
+      age: 28,
+    };
+
+    const updatedUser = {
+      name: "Connor",
+      age: 29,
+    };
+
+    expect(factory(user).mutate(updatedUser)).toEqual({
+      name: "Connor",
+      age: 29,
+    });
+  });
+});
