@@ -7,14 +7,14 @@ interface GeneratedFixture<Fixture> {
 
 function factory<Fixture>(fixture: Fixture): GeneratedFixture<Fixture> {
   return {
-    build: (overrides) => {
+    build(overrides) {
       return {
         ...deepClone(fixture),
         ...overrides,
       };
     },
-    buildList: (overrides, count = 1) => {
-      return new Array().fill(count).map(() => this.build(overrides));
+    buildList(overrides, count = 1) {
+      return Array.from({ length: count }).map(() => this.build(overrides));
     },
   };
 }
