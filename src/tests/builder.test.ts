@@ -11,7 +11,7 @@ describe("#build", () => {
     expect(factory(user).build()).toEqual(user);
   });
 
-  test("supports overrides", () => {
+  test("overrides entities", () => {
     const actual = {
       name: "Connor",
       age: 28,
@@ -22,5 +22,16 @@ describe("#build", () => {
     };
 
     expect(factory(actual).build({ age: 29 })).toEqual(expected);
+  });
+});
+
+describe("#buildList", () => {
+  test("builds entities", () => {
+    const user = {
+      name: "Connor",
+      age: 28,
+    };
+
+    expect(factory(user).buildList()).toEqual([user]);
   });
 });
